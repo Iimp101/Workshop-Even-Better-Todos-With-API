@@ -1,0 +1,139 @@
+@import "bootstrap/scss/bootstrap";
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0.75em;
+}
+
+$gym-bg: #121212;
+$gym-text: #f2f2f2;
+$gym-accent: #ff3b3f;
+$gym-success: #25d366;
+$gym-warning: #fbbf24;
+
+body {
+	background-color: $gym-bg;
+	color: $gym-text;
+	font-family: 'Impact', 'Arial Black', sans-serif;
+	letter-spacing: 0.5px;
+	text-shadow: 1px 1px 2px black;
+}
+
+// Bakgrundsbild
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('/images/gym.jpg');
+	background-size: cover;
+	background-position: center;
+	opacity: 0.2;
+	z-index: -1;
+	pointer-events: none;
+}
+
+// Knappar
+button,
+.btn {
+	text-shadow: none;        
+	font-family: sans-serif;   
+	letter-spacing: 0.5px;     
+	font-weight: 600;         
+	font-size: 0.95rem;       
+	text-transform: none;      
+
+	&:active {
+		transform: scale(0.97);
+	}
+}
+
+.btn-success {
+	background-color: $gym-success;
+}
+.btn-warning {
+	background-color: $gym-warning;
+	color: #222;
+}
+.btn-danger {
+	background-color: $gym-accent;
+}
+
+.todolist {
+	margin-bottom: 2rem;
+
+	.list-group-item {
+		background: #1f1f1f;
+		border: 2px solid #333;
+		padding: 1rem;
+		margin-bottom: 0.5rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: scale(1.01);
+			border-color: $gym-accent;
+		}
+
+		.todo-title {
+			font-size: 1.2rem;
+		}
+
+		&.completed {
+			background-color: #0f0f0f;
+
+			.todo-title {
+				color: $gym-success;
+				font-style: italic;
+				text-decoration: line-through;
+				color: $gym-success;
+			}
+		}
+	}
+}
+
+// Fade/slide in
+@keyframes fadeSlideIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Fade/slide out
+@keyframes fadeSlideOut {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+// Klass som aktiverar in-animation
+.todo-enter {
+	animation: fadeSlideIn 0.3s ease-out;
+}
+
+// Klass som aktiverar ut-animation (läggs före borttagning)
+.todo-exit {
+	animation: fadeSlideOut 0.3s ease-in forwards;
+}
+

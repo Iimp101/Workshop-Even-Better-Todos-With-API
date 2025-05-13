@@ -13,23 +13,24 @@ const TodoPage = () => {
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const [todo, setTodo] = useState<Todo | null>(null);
+	const todoId = Number(id);
 
 	useEffect(() => {
 		const fetchTodo = async () => {
 			setIsLoading(true);
 			setError(false);
 			try {
-				const data = await TodoAPI.getTodo(Number(id));
+				const data = await TodoAPI.getTodo(todoId);
 				setTodo(data);
 			} catch (err) {
 				console.error("Error fetching todo:", err);
-				setError("Kunde inte hämta todo");
+				setError("Could not fetch todo");
 			}
 			setIsLoading(false);
 		};
 	
-		if (id) fetchTodo();
-	}, [id]);
+		if (todoId) fetchTodo();
+	}, [todoId]);
 	
 	const handleToggleTodo = async () => {
 		if (!todo) return;
@@ -41,7 +42,7 @@ const TodoPage = () => {
 			setTodo(updatedTodo);
 		} catch (err) {
 			console.error("Error toggling todo:", err);
-			setError("Kunde inte toggla todo.");
+			setError("Could not toggle Todo.");
 		}
 	};
 
@@ -53,7 +54,7 @@ const TodoPage = () => {
 			navigate("/todos");
 		} catch (err) {
 			console.error("Error deleting todo:", err);
-			setError("Kunde inte radera todo.");
+			setError("Could not delete todo.");
 		}
 	};
 

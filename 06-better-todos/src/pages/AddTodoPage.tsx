@@ -8,7 +8,6 @@ import { useNavigate } from "react-router";
 const AddTodoPage = () => {
 
     const navigate = useNavigate();
-
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -37,12 +36,12 @@ const AddTodoPage = () => {
     return (
         <>
         
-        <h1>Created a new Todo</h1>
+        	<h1>Created a new Todo</h1>
 
-        {successMessage && <Alert variant="success">{successMessage}</Alert>}
-        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+        	{successMessage && <Alert variant="success">{successMessage}</Alert>}
+        	{errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
         
-        <AddTodoForm onAddTodo={handleAddTodo} />
+        	<AddTodoForm onAddTodo={handleAddTodo} />
         </>
     )
 };

@@ -85,8 +85,6 @@ const TodoPage = () => {
 						Delete todo
 					</ConfirmDeleteButton>
 
-
-
 					</div>
 
 					<Button variant="secondary" onClick={() => navigate("/todos")}>

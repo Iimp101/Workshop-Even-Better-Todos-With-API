@@ -19,6 +19,11 @@
       "title": "I want to eat chicken for breakfast",
       "completed": false,
       "id": 9
+    },
+    {
+      "title": "Ett litet test",
+      "completed": false,
+      "id": 10
     }
   ]
 }

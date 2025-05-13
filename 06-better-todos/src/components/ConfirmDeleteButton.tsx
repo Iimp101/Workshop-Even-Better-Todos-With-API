@@ -7,6 +7,7 @@ interface ConfirmDeleteButtonProps {
 }
 
 const ConfirmDeleteButton: React.FC<ConfirmDeleteButtonProps> = ({ onConfirm, children }) => {
+
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);

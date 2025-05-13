@@ -1,21 +1,6 @@
 {
   "todos": [
     {
-      "title": "Gym",
-      "completed": true,
-      "id": 1
-    },
-    {
-      "title": "Gym day 2",
-      "completed": true,
-      "id": 2
-    },
-    {
-      "title": "Gym day 3",
-      "completed": false,
-      "id": 3
-    },
-    {
       "title": "Gym day 4",
       "completed": false,
       "id": 4
@@ -29,11 +14,6 @@
       "title": "YEAH BUDDY",
       "completed": false,
       "id": 7
-    },
-    {
-      "title": "!!!!!!!",
-      "completed": false,
-      "id": 8
     },
     {
       "title": "I want to eat chicken for breakfast",

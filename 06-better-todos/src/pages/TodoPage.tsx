@@ -3,6 +3,7 @@ import * as TodoAPI from "../services/TodosAPI";
 import { useEffect, useState } from "react";
 import { Todo } from "../types/Todo";
 import { Button, Spinner, Alert } from "react-bootstrap";
+import ConfirmDeleteButton from "../components/ConfirmDeleteButton";
 
 
 
@@ -80,12 +81,11 @@ const TodoPage = () => {
 						{todo.completed ? "Mark as NOT completed" : "Mark as COMPLETED"}
 					</Button>
 
-					<Button
-						variant="danger"
-						onClick={handleDeleteTodo}
-					>
-						Delete Todo
-					</Button>
+					<ConfirmDeleteButton onConfirm={handleDeleteTodo}>
+						Delete todo
+					</ConfirmDeleteButton>
+
+
 
 					</div>
 

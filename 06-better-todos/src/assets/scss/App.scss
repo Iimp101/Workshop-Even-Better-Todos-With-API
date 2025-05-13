@@ -131,3 +131,33 @@ button,
 	animation: fadeSlideOut 0.3s ease-in forwards;
 }
 
+.gym-modal {
+	background-color: #1c1c1c;
+	color: #f2f2f2;
+	border: 2px solid #ff3b3f;
+	box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+	font-family: 'Impact', 'Arial Black', sans-serif;
+
+	.modal-header,
+	.modal-footer {
+		border: none;
+	}
+
+	.modal-title {
+		text-shadow: 1px 1px 2px #000;
+		letter-spacing: 1px;
+	}
+
+	.btn-danger {
+		background-color: #ff3b3f;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.btn-secondary {
+		background-color: #444;
+		color: #fff;
+	}
+}
+
+

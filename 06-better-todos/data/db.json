@@ -2,7 +2,7 @@
   "todos": [
     {
       "title": "Gym day 4",
-      "completed": false,
+      "completed": true,
       "id": 4
     },
     {

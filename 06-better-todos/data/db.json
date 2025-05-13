@@ -2,12 +2,12 @@
   "todos": [
     {
       "title": "Gym",
-      "completed": false,
+      "completed": true,
       "id": 1
     },
     {
       "title": "Gym day 2",
-      "completed": false,
+      "completed": true,
       "id": 2
     },
     {
@@ -21,13 +21,8 @@
       "id": 4
     },
     {
-      "title": "Gym day 5",
-      "completed": false,
-      "id": 5
-    },
-    {
       "title": "LIGHT WEIGHT",
-      "completed": false,
+      "completed": true,
       "id": 6
     },
     {

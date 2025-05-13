@@ -14,12 +14,10 @@ export const TodosPage = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
 
 	const getTodos = async () => {
-		// reset state
 		setError(false);
 		setIsLoading(true);
 		setTodos([]);
 
-		// make request to api
 		try {
 			const data = await TodosAPI.getTodos();
 			setTodos(data);

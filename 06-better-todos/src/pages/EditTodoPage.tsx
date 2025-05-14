@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { Alert, Button, Form, Spinner } from "react-bootstrap";
 import * as TodosAPI from "../services/TodosAPI";
+import AutoDismissingAlert from "../components/alerts/AutoDismissingAlert";
+
 const EditTodoPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
@@ -19,8 +21,8 @@ const EditTodoPage = () => {
 				setTitle(todo.title);
 				setCompleted(todo.completed);
 			} catch (err) {
-                console.error(err);
-				setError("Kunde inte ladda todo.");
+				console.error(err);
+				setError("Could not load todo.");
 			}
 			setIsLoading(false);
 		};
@@ -32,13 +34,14 @@ const EditTodoPage = () => {
 		e.preventDefault();
 		try {
 			await TodosAPI.updateTodo(Number(id), { title, completed });
-			setSuccessMessage("Todo uppdaterad!");
+			setSuccessMessage("Updated todo!");
+
 			setTimeout(() => {
 				navigate(`/todos/${id}`);
-			}, 1000);
+			}, 1500);
 		} catch (err) {
-            console.error(err);
-			setError("Det gick inte att uppdatera todo:n.");
+			console.error(err);
+			setError("Could not save todo.");
 		}
 	};
 
@@ -54,7 +57,11 @@ const EditTodoPage = () => {
 		<>
 			<h1>Redigera Todo</h1>
 
-			{successMessage && <Alert variant="success">{successMessage}</Alert>}
+			{successMessage && (
+				<AutoDismissingAlert variant="success" hideAfter={1500}>
+					{successMessage}
+				</AutoDismissingAlert>
+			)}
 
 			<Form onSubmit={handleSubmit}>
 				<Form.Group className="mb-3">
@@ -70,16 +77,20 @@ const EditTodoPage = () => {
 				<Form.Group className="mb-3">
 					<Form.Check
 						type="checkbox"
-						label="Avklarad"
+						label="Done"
 						checked={completed}
 						onChange={(e) => setCompleted(e.target.checked)}
 					/>
 				</Form.Group>
 
 				<Button type="submit" variant="primary">
-					Spara ändringar
+					Save changes
 				</Button>
 			</Form>
+
+			<Button variant="secondary" onClick={() => navigate(-1)} className="mt-3">
+				Go back
+			</Button>
 		</>
 	);
 };

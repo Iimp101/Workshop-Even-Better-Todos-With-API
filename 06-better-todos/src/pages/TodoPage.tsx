@@ -90,6 +90,13 @@ const TodoPage = () => {
 					<Button variant="secondary" onClick={() => navigate("/todos")}>
 						Back to all todos
 					</Button>
+					<Button
+						variant="info"
+						onClick={() => navigate(`/todos/${todo.id}/edit`)}
+						className="me-2"
+					>
+						Edit
+					</Button>
 				</>
 			)}
 		</>

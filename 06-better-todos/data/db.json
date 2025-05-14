@@ -16,14 +16,24 @@
       "id": 7
     },
     {
-      "title": "I want to eat chicken for breakfast",
-      "completed": false,
+      "title": "I want to eat chicken for breakfast PART 2",
+      "completed": true,
       "id": 9
     },
     {
       "title": "Ett litet test",
       "completed": false,
       "id": 10
+    },
+    {
+      "title": "Akta",
+      "completed": false,
+      "id": 11
+    },
+    {
+      "title": "Bakta",
+      "completed": true,
+      "id": 12
     }
   ]
 }

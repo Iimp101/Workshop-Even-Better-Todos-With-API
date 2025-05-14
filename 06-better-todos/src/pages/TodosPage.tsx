@@ -7,6 +7,7 @@ import TodoCounter from "../components/TodoCounter";
 import * as TodosAPI from "../services/TodosAPI";
 import { NewTodo, Todo } from "../types/Todo";
 import { Link } from "react-router";
+import ErrorAlert from "../components/alerts/ErrorAlert";
 
 export const TodosPage = () => {
 	const [error, setError] = useState<string | false>(false);
@@ -26,7 +27,7 @@ export const TodosPage = () => {
 			setError(err instanceof Error ? err.message : "It's not me, it's you");
 		}
 		setIsLoading(false);
-	}
+	};
 
 	const handleAddTodo = async (title: string) => {
 		const todo: NewTodo = {
@@ -35,9 +36,19 @@ export const TodosPage = () => {
 		}
 		await TodosAPI.postTodo(todo);
 		getTodos();
-	}
+	};
 
 	const completedTodos = todos.filter(todo => todo.completed);
+
+	const sortedTodos = [...todos].sort((a, b) => {
+		if (a.completed === b.completed) {
+			return a.title.localeCompare(b.title);
+		}
+		return a.completed ? 1 : -1;
+	});
+
+	// Sort both completed and incompleted todos
+	// const sortedTodos = [...todos].sort((a, b) => a.title.localeCompare(b.title));
 
 	useEffect(() => {
 		getTodos();
@@ -50,9 +61,9 @@ export const TodosPage = () => {
 			<AddTodoForm onAddTodo={handleAddTodo} />
 
 			{error && (
-				<Alert variant="danger">
+				<ErrorAlert>
 					{error}
-				</Alert>
+				</ErrorAlert>
 			)}
 
 			{isLoading && (
@@ -64,7 +75,7 @@ export const TodosPage = () => {
 			{!error && !isLoading && todos.length > 0 && (
 				<>
 					<ListGroup className="todolist">
-						{todos.map(todo => (
+						{sortedTodos.map(todo => (
 							<ListGroup.Item
 								action
 								as={Link}
@@ -84,7 +95,7 @@ export const TodosPage = () => {
 				</>
 			)}
 
-			{!error && !isLoading && todos.length === 0 && (
+			{!error && !isLoading && sortedTodos.length === 0 && (
 				<Alert variant="warning">
 					You ain't got no todos 🤔?
 				</Alert>
